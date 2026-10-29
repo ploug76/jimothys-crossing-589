@@ -15,7 +15,7 @@ const ST={get(k,d){try{const v=localStorage.getItem(GAME_ID+':'+k);return v==nul
 // ---------- safe area + layout
 let SAFE={t:0,r:0,b:0,l:0};
 function readSafe(){try{if(window.__SAFE){SAFE=Object.assign({t:0,r:0,b:0,l:0},window.__SAFE);return}const d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;width:0;height:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';document.body.appendChild(d);const cs=getComputedStyle(d);SAFE={t:parseFloat(cs.paddingTop)||0,r:parseFloat(cs.paddingRight)||0,b:parseFloat(cs.paddingBottom)||0,l:parseFloat(cs.paddingLeft)||0};d.remove()}catch(e){}}
-let DPR=1,SC=1,OXs=0,OYs=0,LH=600,BY=HUDH,EXTRA=0,DPAD=null,dpadOn=ST.get('dpad',true);
+let DPR=1,SC=1,OXs=0,OYs=0,LH=600,BY=HUDH,EXTRA=0,DPAD=null,dpadOn=false;
 let menuBtns=[],BTN=[],UI=[],lastUI=[];
 function onResize(){DPR=Math.min(devicePixelRatio||1,3);readSafe();c.width=Math.round(innerWidth*DPR);c.height=Math.round(innerHeight*DPR);
  const aw=Math.max(120,innerWidth-SAFE.l-SAFE.r),ah=Math.max(120,innerHeight-SAFE.t-SAFE.b);
